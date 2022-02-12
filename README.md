@@ -62,61 +62,42 @@ exifASICData returns the data for EXIF tags with type ASCII.
 
 **vals** is a pointer to an array of characters provided by the user.  The character string for that tag will be written to that array, so it must be large enough to handle data returned.  They are 0 terminated c style strings. 
 
-**Return **
-
+**Return**
 
     A greater than 0 integer indicates the number of characters written to vals[]
-
-
     0 indicates that no data was found for that tag which means it was not in the file
-
-
     -1 indicates the data associated with that tag was found but is not ASCI data.
 
 
 ```
 int exifUIntData(uint16_t tag, uint32_t* vals);
 ```
-
-
  exifUIntData returns data for tags with type UNDEFINED, BYTE, SHORT or LONG.
 
 **tag** is the TIFF, EXIF, or GPS tag defined in the EXIF spec.  See the description below.
 
 **vals** is a pointer to an array of 32-bit unsigned integers provided by the user.  The integer values for that tag will be written to that array, so it must be large enough to handle data returned. 
 
-**Return **
-
+**Return**
 
     A greater than 0 integer indicates the number of 32-bit unsigned integers written to vals[]
-
-
     0 indicates that no data was found for that tag which means it was not in the file
-
-
     -1 indicated the data associated with that tag was found but is not unsigned integer data
 
 
 ```
 int exifIntData(uint16_t tag, int32_t* vals);
 ```
-
-
  exifIntData returns data for tags with type SLONG.
 
 **tag** is the TIFF, EXIF, or GPS tag defined in the EXIF spec.  See the description below.
 
 **vals** is a pointer to an array of 32-bit signed integers provided by the user.  The integer values for that tag will be written to that array, so it must be large enough to handle data returned. 
 
-**Return **
-
+**Return**
 
     A greater than 0 integer indicates the number of 32-bit signed integers written to vals[]
-
-
     0 indicates that no data was found for that tag which indicates it was not in the file
-
-
     -1 indicated the data associated with that tag was found but is not integer data
 
 
@@ -131,20 +112,16 @@ int exifRationalData(uint16_t tag, double* vals);
 
 **vals** is a pointer to an array of doubles provided by the user.  The doubles for that tag will be written to that array, so it must be large enough to handle data returned.  Note that in the case of rationals, the double returned is the result of dividing the numerator and denominator in the EXIF data.
 
-**Return **
+**Return**
 
-A greater than  0 integer indicates the number of double values written to vals[]
-
-0 indicates that no data was found for that tag which indicates it was not in the file
-
--1 indicated the data associated with that tag was found but is not integer data 
+    A greater than 0 integer indicates the number of doubles written to vals[]
+    0 indicates that no data was found for that tag which indicates it was not in the file
+    -1 indicated the data associated with that tag was found but is not integer data
 
 
 ```
 void tagmapFree(); 
 ```
-
-
 tagmapFree frees the internal data structure memory that holds the EXIF data.  This function is called when a new file is opened, so it is unnecessary to call it between successive file reads.
 
 
