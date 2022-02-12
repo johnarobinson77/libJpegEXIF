@@ -128,7 +128,7 @@ tagmapPrint() {
 	int32_t ivals[10];
 	double dvals[10];
 	while (current != NULL) {
-		printf("% 04x %2x %04x, ", current->tag, current->type, current->count);
+		printf("%04x %2x %04x, ", current->tag, current->type, current->count);
 		if (current->type == TIFF_TYPE_BYTE || current->type == TIFF_TYPE_SHORT ||
 			current->type == TIFF_TYPE_LONG || current->type == TIFF_TYPE_UNDEFINED) {
 			int cnt = exifUIntData(current->tag, uivals);
@@ -226,7 +226,7 @@ process_exif_parameters(j_decompress_ptr cinfo) {
 	/* Check to see that this is EXIF data 
 	   If it not EXIF data don't fail because this could be other APP1 data
 		 but don't continue to parse the data.*/
-	if (0 != strcmp(data, "Exif")) {
+	if (0 != strcmp((char*)data, "Exif")) {
 		returnBool = TRUE;
 		goto freeAndReturn;
 	}
