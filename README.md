@@ -21,24 +21,24 @@ Assuming the libJpeg library is already building correctly, only two additional 
 
 In addition, add the following two lines to jdmarker.c:
 
-Somewhere around line 20, add the following external reference underlined below
+Somewhere around line 20, add the following external reference indicated below below
 
 
 ```
     #include "jpeglib.h"
 
-    extern boolean process_exif_parameters(j_decompress_ptr cinfo);
+    extern boolean process_exif_parameters(j_decompress_ptr cinfo); // ADD THIS LINE
 
     typedef enum {			/* JPEG marker codes */
 ```
 
 
-Somewhere around line 1433, add the following underlined code.
+Somewhere around line 1433, add the line indicated below code.
 
 
 ```
       marker->process_APPn[0] = get_interesting_appn;
-      marker->process_APPn[1] = process_exif_parameters;
+      marker->process_APPn[1] = process_exif_parameters; // ADD THIS LINE
       marker->process_APPn[14] = get_interesting_appn;
 ```
 
